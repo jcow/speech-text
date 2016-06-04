@@ -3,3 +3,4 @@ output/
 .Python
 .python-version
 venv/
+*.pyc
