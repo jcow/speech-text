@@ -7,25 +7,24 @@ import urllib
 
 class WolframAlpha(object):
 
-	filepath = "stuff/wolfram_query_output.xml"
-
-	def __init__(self, api_key):
-		self.api_key = api_key
+	def __init__(self, api_key, filepath):
+		self._api_key = api_key
+		self._filepath = filepath
 		pass
 
 	def get(self, query):
 		query = self._encode_query(query)
-		url = 'http://api.wolframalpha.com/v2/query?input={}&appid={}'.format(query, self.api_key)
+		url = 'http://api.wolframalpha.com/v2/query?input={}&appid={}'.format(query, self._api_key)
 
 		print(url)
 
 		r = requests.get(url)
-		f = open('stuff/wolfram_query_output.xml', 'w+')
+		f = open(self._filepath, 'w+')
 		f.write(r.text)
 		f.close()
 
 	def parse(self):
-		filepath = self.filepath
+		filepath = self._filepath
 		tree = ET.parse(filepath)
 		root = tree.getroot()
 

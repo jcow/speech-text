@@ -12,7 +12,7 @@ read_config = Config("../config/config")
 
 voice_input = VoiceInput(read_config.get_speech_to_text_file())
 voice_output = VoiceOutput(read_config.get_text_to_speech_file())
-wolfram_alpha = WolframAlpha(read_config.get_wolfram_alpha_api_key())
+wolfram_alpha = WolframAlpha(read_config.get_wolfram_alpha_api_key(), read_config.get_answer_output_file())
 mp3 = Mp3(read_config.get_text_to_speech_file())
 
 speech_text = voice_input.get_speech()
